@@ -1,0 +1,125 @@
+﻿@model PorjetoUfsmArrano.Models.Treinamentos
+
+@{
+    ViewBag.Title = "Detalhes Treinamentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Treinamentos
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/images/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">Treinamentos</li>
+                <li class="active">Detalhes</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datainicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datainicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datafim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datafim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.duracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.duracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.statustreinamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.statustreinamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipotreinamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipotreinamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bases)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bases)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-default">Cancelar</a>
+</p>

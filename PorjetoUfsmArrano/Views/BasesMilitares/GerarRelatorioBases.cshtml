@@ -1,0 +1,115 @@
+﻿@model PagedList.IPagedList<PorjetoUfsmArrano.Models.BasesMilitares>
+@{
+    ViewBag.Title = "ListagemBasesMilitares";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Relatório de Bases Militares Cadastradas
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("Usuarios")">Relatório</a></li>
+                <li class="active">Usuários</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<table class="table">
+
+    <tr>
+
+
+        <th>Nome </th>
+        <th>Descrição </th>
+        <th>Cidade </th>
+        <th>Cep </th>
+        <th>Nome Contato </th>
+        <th>Nome Fantasia</th>
+        <th>Logo</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.descricao)</td>
+            <td>@Html.DisplayFor(modelItem => item.cidade)</td>
+            <td>@Html.DisplayFor(modelItem => item.Cep)</td>
+            <td>@Html.DisplayFor(modelItem => item.nome_contato)</td>
+            <td>@Html.DisplayFor(modelItem => item.NomeFantasia)</td>
+    <td>
+          <img style="max-height:100px;max-width:200px" src=@(item.logo!=null? "data:image/png;base64,"+@System.Convert.ToBase64String(item.logo, 0, item.logo.Length)
+                                                           : "../png/sem-imagem.jpg" ) />
+                                                </td>
+
+        </tr> }
+
+    <tr>
+
+        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
+
+        <td><a href="/BasesMilitares/GerarRelatorioBases?gerarPDF=true"><b>GERAR PDF</b></a></td>
+
+    </tr>
+
+</table>
+
+
+            </div>
+
+        </div>
+@{
+    if (Model.TotalItemCount != Model.Count)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+                @if (Model.HasPreviousPage)
+                {
+                    @Html.ActionLink("<<", "ListagemBasesMilitares", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.Raw(" ");
+                    @Html.ActionLink("< Anterior", "ListagemBasesMilitares", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                }
+                else
+                {
+                    @:<<
+                    @Html.Raw(" ");
+                    @:< Anterior
+                                         }
+
+                @if (Model.HasNextPage)
+                {
+                    @Html.ActionLink("Próxima >", "ListagemBasesMilitares", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.Raw(" ");
+                    @Html.ActionLink(">>", "ListagemBasesMilitares", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                }
+                else
+                {
+                    @:Próxima >
+                    @Html.Raw(" ")
+                    @:>>
+                     }
+            </div>
+        </div>
+    }
+}
+
+    </div>
+
+</div>
+

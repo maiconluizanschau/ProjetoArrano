@@ -1,0 +1,84 @@
+﻿@model PorjetoUfsmArrano.Models.Evento
+
+@{
+    ViewBag.Title = "Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+</br></br></br></br></br></br></br>
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Lembretes
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/images/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">Lembretes</li>
+                <li class="active">Novo Lembrete</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Evento</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataInicial, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataInicial, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataInicial, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataFinal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DataFinal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataFinal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Cor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Cor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

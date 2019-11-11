@@ -1,0 +1,138 @@
+﻿@model PorjetoUfsmArrano.Models.Treinamentos
+
+@{
+    ViewBag.Title = "Cadastrar Treinamentos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Treinamentos
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/images/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">Treinamentos</li>
+                <li class="active">Novo Treinamento</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.descricao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.data, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.data, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.datainicio, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.datainicio, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.datainicio, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.datafim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.datafim, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.datafim, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.duracao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.duracao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.duracao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.statustreinamento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.statustreinamento, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.statustreinamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tipotreinamento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.tipotreinamento, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tipotreinamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @if (@ViewBag.Master == null)
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.id_base, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("id_base", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id_base, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        }
+        else
+        {
+            <input type="hidden" name="id_empresa" value="@ViewBag.Master" />
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cadastrar" class="btn btn-default" />
+                <a href="@Url.Action("Index")" class="btn btn-default">Cancelar</a>
+            </div>
+        </div>
+    </div>
+}
+

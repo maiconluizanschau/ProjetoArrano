@@ -1,0 +1,228 @@
+﻿@using PorjetoUfsmArrano.Controllers;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>@ViewBag.Title - Arrano</title>
+    <script src="~/Scripts/icheck.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="~/Content/skins/_all-skins.min.css" />
+    <link rel="stylesheet" href="~/Content/skins/all.css" />
+    <link href="~/Content/menu.css" rel="stylesheet" type="text/css" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="/Scripts/html5shiv.min.js"></script>
+        <script src="/Scripts/respond.min.js"></script>
+    <![endif]-->
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+</head>
+
+<!-- Navigation Bar-->
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <a href="index.html" class="logo"><i class="md md-equalizer"></i> <span>Arrano</span> </a>
+            </div>
+            <!-- End Logo container-->
+
+            <div class="menu-extras">
+
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+                    <li class="dropdown hidden-xs">
+                        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
+                           data-toggle="dropdown" aria-expanded="true">
+                            <i class="md md-notifications"></i> <span class="badge badge-xs badge-pink">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg">
+                            <li class="text-center notifi-title">Notificações</li>
+                            <li class="list-group nicescroll notification-list">
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-diamond noti-primary"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"></h5>
+                                            <p class="m-0">
+                                                <small></small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-cog noti-warning"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading"></h5>
+                                            <p class="m-0">
+                                                <small></small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-bell-o noti-success"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Updates</h5>
+                                            <p class="m-0">
+                                                <small>
+
+                                                </small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0);" class=" text-right">
+                                    <small><b></b></small>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true">
+                            <span>
+                                <!--sessao da pessoa que esta logada-->
+                                @if (Session["nomeUsuarioLogado"] != null)
+                                {
+                                    <text>
+                                        BEM-VINDO, @Session["nomeUsuarioLogado"].ToString().ToUpper()
+                                    </text>
+                                    //se estiver logado manda para resumo
+                                }
+                                //se nao estiver logado manda para tela de login
+                                else
+                                {
+                                    Response.Redirect("~/Home/Login");
+                                }
+
+                                <!--fim da sessao da pessoa que esta logada-->
+                            </span>
+
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="/Home/Logout">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End topbar -->
+    <!-- Navbar Start -->
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="has-submenu active">
+
+                        <a href="@Url.Action("Index","Home")"><i class="md md-dashboard"></i>Home</a>
+                         </li>
+                        <li class="has-submenu">
+
+                    <li><a href="@Url.Action("Index", "militares")"><i class="fa fa-circle-o"></i> Militar</a></li>
+                    <li><a href="@Url.Action("Index", "BasesMilitares")"><i class="fa fa-circle-o"></i> Bases Militares</a></li>
+                    <li><a href="@Url.Action("Index", "treinamentos")"><i class="fa fa-circle-o"></i> Treinamentos</a></li>
+                    <li><a href="@Url.Action("Index", "avaliar")"><i class="fa fa-circle-o"></i> Avaliações</a></li>
+                    <li><a href="@Url.Action("Index","eventos")"><i class="fa fa-circle-o"></i> Lembretes</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Relatórios</a></li>
+                  
+
+
+                    <li><a href="@Url.Action("Index", "Cameras") "><i class="fa fa-circle-o"></i>Câmeras</a></li>
+
+                    <li><a href="@Url.Action("Index", "usuarios") "><i class="fa fa-circle-o"></i>Usuários</a></li>
+
+                    </li>
+
+                </ul>
+                <!-- End navigation menu -->
+            </div>
+        </div>
+    </div>
+</header>
+            <!-- /.sidebar -->
+        </aside>
+        <div class="content-wrapper">
+            @RenderBody()
+        </div>
+<footer class="main-footer text-center container-fluid hidden-xs hidden-sm" style="background: #333333 !important; margin-left: auto; position: absolute; bottom: 0; width: 100%;">
+    <strong>&copy;@DateTime.Now.Year - Arrano-UFSM</strong>
+</footer>
+
+        @ViewBag.Message
+        <!--rodape atualizacao ano servidor-->
+        @*<div class="container-fluid body-content" style="background: #333333;">
+                <footer><center><p style="color: #8d8d8d;">&copy;@DateTime.Now.Year - I3 Tecnologia</p></center></footer>
+            </div>
+        *@
+
+        @*<aside class="control-sidebar control-sidebar-dark">
+                <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+                    <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+                    <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+                </ul>
+                <div class="tab-content">
+                </div>
+            </aside>*@
+        <div class="control-sidebar-bg"></div>
+    </div><!-- ./wrapper -->
+    <script>
+        var AdminLTEOptions = {
+            //BoxRefresh Plugin
+            enableBoxRefresh: false,
+            //Bootstrap.js tooltip
+            enableBSToppltip: false
+        };
+    </script>
+<script src="../sources/locale/locale_pt.js" charset="utf-8"></script>
+</body>
+</html>

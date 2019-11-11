@@ -1,0 +1,81 @@
+﻿@model IEnumerable<PorjetoUfsmArrano.Models.Lembretes>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descricaosimples)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescricaoCompleta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Data)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gravado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipolembrete)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_militar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataFim)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.descricaosimples)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescricaoCompleta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Data)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gravado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipolembrete)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_militar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataFim)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_lembretes }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_lembretes }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_lembretes })
+        </td>
+    </tr>
+}
+
+</table>

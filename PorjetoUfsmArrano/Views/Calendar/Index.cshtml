@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+</br></br></br></br></br></br></br>
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../sources/locale/locale_pt.js" charset="utf-8"></script>
+    <title>Sistema de Lembretes</title>
+    <style>
+        body
+        {
+            background-color:#eee;
+        }
+    </style>
+</head>
+<body>
+    <div style="height:900px;width:1000px;margin:0 auto">
+        @Html.Raw(Model.Render())
+    </div>
+    </br>
+    <script src="../sources/locale/locale_pt.js" charset="utf-8"></script>
+</body>
+</html>

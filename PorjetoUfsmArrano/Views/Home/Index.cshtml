@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+</br></br></br></br></br></br></br>
+<h2>Bem Vindo</h2>
+
+<div class="row">
+    <div class="col-sm-6 col-lg-3">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart" data-dimension="90" data-text="35%" data-width="5" data-fontsize="14" data-percent="35" data-fgcolor="#5fbeaa" data-bgcolor="#ebeff2"></div>
+            <h3 class="text-success counter">06</h3>
+            <p class="text-muted text-nowrap">Militares Cadastrados</p>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart" data-dimension="90" data-text="75%" data-width="5" data-fontsize="14" data-percent="75" data-fgcolor="#3bafda" data-bgcolor="#ebeff2"></div>
+            <h3 class="text-primary counter">05</h3>
+            <p class="text-muted text-nowrap">Bases Militares</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart" data-dimension="90" data-text="58%" data-width="5" data-fontsize="14" data-percent="58" data-fgcolor="#f76397" data-bgcolor="#ebeff2"></div>
+            <h3 class="text-pink"> <span class="counter">07</span></h3>
+            <p class="text-muted text-nowrap">Treinamentos</p>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+        <div class="widget-simple-chart text-right card-box">
+            <div class="circliful-chart" data-dimension="90" data-text="49%" data-width="5" data-fontsize="14" data-percent="49" data-fgcolor="#98a6ad" data-bgcolor="#ebeff2"></div>
+            <h3 class="text-inverse counter">04</h3>
+            <p class="text-muted text-nowrap">Avaliações</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="row">
+                        <div class="col-xs-6 text-center">
+                            <canvas id="partly-cloudy-day" width="100" height="100"></canvas>
+                        </div>
+                        <div class="col-xs-6">
+
+                            <h2 class="m-t-0 text-muted"><b>12°</b></h2>
+                            <p class="text-muted">camobi-Santa Maria</p>
+                            <p class="text-muted">15km/h - 37%</p>
+                        </div>
+                    </div><!-- End row -->
+                </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">SA</h4>
+                            <canvas id="cloudy" width="35" height="35"></canvas>
+                            <h4 class="text-muted">06<i class="wi-degrees"></i></h4>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">DOM</h4>
+                            <canvas id="wind" width="35" height="35"></canvas>
+                            <h4 class="text-muted">07<i class="wi-degrees"></i></h4>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">SEG</h4>
+                            <canvas id="clear-day" width="35" height="35"></canvas>
+                            <h4 class="text-muted">08<i class="wi-degrees"></i></h4>
+                        </div>
+                    </div><!-- end row -->
+                </div>
+            </div><!-- end row -->
+        </div>
+    </div> <!-- end col -->
+
+    <div class="col-lg-6">
+        <div class="card-box">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div class="">
+                        <div class="row">
+                            <div class="col-xs-6 text-center">
+                                <canvas id="snow" width="100" height="100"></canvas>
+                            </div>
+                            <div class="col-xs-6">
+                                <h2 class="m-t-0 text-muted"><b> 10°</b></h2>
+                                <p class="text-muted">Boi Morto-Santa Maria</p>
+                                <p class="text-muted">15km/h - 37%</p>
+                            </div>
+                        </div><!-- end row -->
+                    </div><!-- weather-widget -->
+                </div>
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">TER</h4>
+                            <canvas id="sleet" width="35" height="35"></canvas>
+                            <h4 class="text-muted">06<i class="wi-degrees"></i></h4>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">QUA</h4>
+                            <canvas id="fog" width="35" height="35"></canvas>
+                            <h4 class="text-muted">07<i class="wi-degrees"></i></h4>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                            <h4 class="text-muted m-t-0">QUI</h4>
+                            <canvas id="partly-cloudy-night" width="35" height="35"></canvas>
+                            <h4 class="text-muted">08<i class="wi-degrees"></i></h4>
+                        </div>
+                    </div><!-- End row -->
+                </div> <!-- col-->
+            </div><!-- End row -->
+        </div>
+    </div> <!-- end col -->
+</div>
+<!--end row/ WEATHER -->
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card-box">
+            <h4 class="text-dark  header-title m-t-0">Treinamentos Realizados</h4>
+            <p class="text-muted m-b-25 font-13">
+                Confira os treinamentos realizados nas últimas semanas.
+            
+
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Treinamento</th>
+                            <th>Início</th>
+
+                            <th></th>
+                            <th>Fim</th>
+                        </tr>
+                    </thead>
+                    <th></th>
+                    <th>testetreinamentomaicon</th>
+                    <th>1992-03-12 00:00:00</th>
+                    <th>2013-03-25 00:00:00</th>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.7.1.min.js"></script>
+    </p>
+<script type="text/javascript">
+                        function ListarTreinamentos() {
+                            $.ajax({
+                                type: 'GET', url: '/Home/ListarTreinamentos',
+                                dataType: 'html',
+                                cache: false,
+                                async: true,
+                                success: function (data) {
+                                    $('#ListarTreinamentos').html(data);
+                                }
+                            });
+                        } $(document).ready(function () {
+                            Temporizador = setInterval(ListarUnidades, 2000);
+                        });</script>
+<!--fim do script de atualização dos chamados-->
+</script>

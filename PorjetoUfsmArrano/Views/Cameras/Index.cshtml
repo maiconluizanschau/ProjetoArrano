@@ -1,0 +1,97 @@
+﻿@model IEnumerable<PorjetoUfsmArrano.Models.Cameras>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+</br></br></br></br></br></br>
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Cameras
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li class="active">Câmeras</li>
+
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+                    <h3 class="box-title"><a href="@Url.Action("Cadastrar")" class="btn btn-facebook"><i class="fa fa-plus"></i> Cadastrar</a></h3>
+
+                </div><!-- /.box-header -->
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.senha)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_tipo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_treinamentos)
+        </th>
+        <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ip)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.senha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id_treinamentos)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>

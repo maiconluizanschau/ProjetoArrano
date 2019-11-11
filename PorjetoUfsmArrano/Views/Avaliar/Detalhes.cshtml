@@ -1,0 +1,91 @@
+﻿@model PorjetoUfsmArrano.Models.Avaliar
+
+@{
+    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Avaliações
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">Avaliações</li>
+                <li class="active">Detalhes</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descricao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descricao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_militar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_militar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_treinamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_treinamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_basemilitar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_basemilitar)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Index")" class="btn btn-default">Cancelar</a>
+</p>

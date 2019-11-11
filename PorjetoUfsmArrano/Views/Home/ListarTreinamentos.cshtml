@@ -1,0 +1,39 @@
+﻿@model IEnumerable<PorjetoUfsmArrano.Models.Treinamentos>
+<table class="table">
+    <p>
+        Última Definição carregada em oi:
+        @DateTime.Now.ToString("HH:mm:ss")
+    </p>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datainicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datafim)
+        </th>
+
+    </tr>
+    @foreach (var item in Model.Where(p => p.id_treinamentos == int.Parse(Request["id"])))
+    { @*p.Data > DateTime.Now &&*@
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datainicio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datafim)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,154 @@
+﻿@model PorjetoUfsmArrano.Models.Usuario
+
+@{
+    ViewBag.Title = "Cadastrar Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/Mascara.js"></script>
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Usuários
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/images/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">Usuários</li>
+                <li class="active">Novo Usuario</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nome, htmlAttributes: new { @class = "control-label col-md-2", onkeyup = "formataTexto(event); " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nome, new { htmlAttributes = new { @class = "form-control", onkeyup = "formataTexto(event); " } })
+                @Html.ValidationMessageFor(model => model.nome, "", new { @class = "text-danger", onkeyup = "formataTexto(event); " })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.sobrenome, htmlAttributes: new { @class = "control-label col-md-2", onkeyup = "formataTexto(event); " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.sobrenome, new { htmlAttributes = new { @class = "form-control", onkeyup = "formataTexto(event); " } })
+                @Html.ValidationMessageFor(model => model.sobrenome, "", new { @class = "text-danger", onkeyup = "formataTexto(event); " })
+            </div>
+        </div>
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            @Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.senha, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.senha, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.senha, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.master, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.master, new { htmlAttributes = new { @onchange = "Esconde()" } })
+                    @Html.ValidationMessageFor(model => model.master, "", new { @class = "text-danger" })
+                    <span id="isMASTER" class="text-danger field-validation-error" style="display:none">Usuário Master tem acesso aos dados de todas as Bases Militares.</span>
+                </div>
+            </div>
+        </div>
+            <div class="form-group" id="BASES">
+                @Html.LabelFor(model => model.id_base, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("id_base",null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.id_base, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.telefone, htmlAttributes: new { @class = "control-label col-md-2", onkeyup = "formataTelefone(event);" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.telefone, new { htmlAttributes = new { @class = "form-control", onkeyup = "formataTelefone(event);" } })
+                    @Html.ValidationMessageFor(model => model.telefone, "", new { @class = "text-danger", onkeyup = "formataTelefone(event);" })
+                </div>
+            </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Data, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Data, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Cadastrar" class="btn btn-default" />
+                    <a href="@Url.Action("Index")" class="btn btn-default">Cancelar</a>
+                </div>
+            </div>
+        </div>
+            }
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+            <script>
+                //document.body.onload = Iniciar;
+                //function Iniciar() {
+                //    document.getElementsByName('gerente')[0].onclick(Esconde);
+                //}
+                function Esconde() {
+                    if (document.getElementsByName('master')[0].checked) {
+                        $("#BASES").hide();
+                        $("#isMASTER").show();
+                    }
+                    else {
+                        $("#BASES").show();
+                        $("#isGERENTE").hide();
+                    }
+                }
+
+            </script>

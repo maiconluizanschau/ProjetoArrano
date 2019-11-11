@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/FullCalendar/fullcalendar.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/FullCalendar/moment.min.js")"></script>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="@Url.Content("~/Scripts/FullCalendar/fullcalendar.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui.custom.min.js")"></script>
+</head>
+<header id="topnav">
+    <div class="topbar-main">
+        <div class="container">
+
+            <!-- Logo container-->
+            <div class="logo">
+                <a href="index.html" class="logo"><i class="md md-equalizer"></i> <span>Arrano</span> </a>
+            </div>
+            <!-- End Logo container-->
+
+            <div class="menu-extras">
+
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li>
+                        <form role="search" class="navbar-left app-search pull-left hidden-xs">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <a href=""><i class="fa fa-search"></i></a>
+                        </form>
+                    </li>
+                    <li class="dropdown hidden-xs">
+                        <a href="#" data-target="#" class="dropdown-toggle waves-effect waves-light"
+                           data-toggle="dropdown" aria-expanded="true">
+                            <i class="md md-notifications"></i> <span class="badge badge-xs badge-pink">3</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg">
+                            <li class="text-center notifi-title">Notificações</li>
+                            <li class="list-group nicescroll notification-list">
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-diamond noti-primary"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">
+                                                A new order has been placed A new
+                                                order has been placed
+                                            </h5>
+                                            <p class="m-0">
+                                                <small>There are new settings available</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-cog noti-warning"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">New settings</h5>
+                                            <p class="m-0">
+                                                <small>There are new settings available</small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- list item-->
+                                <a href="javascript:void(0);" class="list-group-item">
+                                    <div class="media">
+                                        <div class="pull-left p-r-10">
+                                            <em class="fa fa-bell-o noti-success"></em>
+                                        </div>
+                                        <div class="media-body">
+                                            <h5 class="media-heading">Updates</h5>
+                                            <p class="m-0">
+                                                <small>
+                                                    There are <span class="text-primary">2</span> new
+                                                    updates available
+                                                </small>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <li>
+                                <a href="javascript:void(0);" class=" text-right">
+                                    <small><b>See all notifications</b></small>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle waves-effect waves-light profile" data-toggle="dropdown" aria-expanded="true">
+                            <span>
+                                <!--sessao da pessoa que esta logada-->
+                                @if (Session["nomeUsuarioLogado"] != null)
+                                {
+                                    <text>
+                                        BEM-VINDO, @Session["nomeUsuarioLogado"].ToString().ToUpper()
+                                    </text>
+                                    //se estiver logado manda para resumo
+                                }
+                                //se nao estiver logado manda para tela de login
+                                else
+                                {
+                                    Response.Redirect("~/Home/Login");
+                                }
+
+                                <!--fim da sessao da pessoa que esta logada-->
+                            </span>
+
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="#">Perfil</a></li>
+                            <li><a href="/Home/Logout">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="menu-item">
+                    <!-- Mobile menu toggle-->
+                    <a class="navbar-toggle">
+                        <div class="lines">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </a>
+                    <!-- End mobile menu toggle-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End topbar -->
+    <!-- Navbar Start -->
+    <div class="navbar-custom">
+        <div class="container">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu">
+                    <li class="has-submenu active">
+                        <a href="@Url.Action("Index","Home")"><i class="md md-dashboard"></i>Home</a>
+                    <li><a href="@Url.Action("Index", "militares")"><i class="fa fa-circle-o"></i> Militar</a></li>
+                    <li><a href="@Url.Action("Index", "BasesMilitares")"><i class="fa fa-circle-o"></i> Bases Militares</a></li>
+                    <li><a href="@Url.Action("Index", "treinamentos")"><i class="fa fa-circle-o"></i> Treinamentos</a></li>
+                    <li><a href="@Url.Action("Index", "avaliacoes")"><i class="fa fa-circle-o"></i> Avaliações</a></li>
+                    <li><a href="@Url.Action("calendar")"><i class="fa fa-circle-o"></i> Lembretes</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Relatórios</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i>Desempenho</a></li>
+                    <li><a href="@Url.Action("Index", "usuarios") "><i class="fa fa-circle-o"></i>Usuários</a></li>
+                    </li>
+
+                </ul>
+                <!-- End navigation menu -->
+            </div>
+        </div>
+    </div>
+</header>
+<body>
+    @RenderBody()
+    @RenderSection("scripts", required: false)
+</body>
+</html>

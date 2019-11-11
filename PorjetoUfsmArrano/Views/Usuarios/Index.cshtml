@@ -1,0 +1,98 @@
+﻿@model IEnumerable<PorjetoUfsmArrano.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Usuários
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("Usuarios")">Cadastros</a></li>
+                <li class="active">Usuários</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+                    <h3 class="box-title"><a href="@Url.Action("Cadastrar")" class="btn btn-facebook"><i class="fa fa-plus"></i> Cadastrar</a></h3>
+
+                </div><!-- /.box-header -->
+            </div>
+        </div>
+    </div>
+  
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.login)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.Bases)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.master)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.telefone)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.login)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bases)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.master)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.telefone)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a href="@Url.Action("Editar", new { id=item.id_usuario })" class="btn btn-facebook"><i class="fa fa-edit"></i></a>
+                        <a href="@Url.Action("Detalhes", new { id=item.id_usuario })" class="btn btn-facebook"><i class="fa fa-eye"></i></a>
+                        <a href="@Url.Action("Deletar", new { id=item.id_usuario })" class="btn btn-facebook"><i class="fa fa-remove"></i></a>
+
+                    </div>
+                  
+                </td>
+            </tr>
+        }
+
+    </table>

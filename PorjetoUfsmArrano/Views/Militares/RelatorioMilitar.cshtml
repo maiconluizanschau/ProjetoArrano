@@ -1,0 +1,119 @@
+﻿@model PagedList.IPagedList<PorjetoUfsmArrano.Models.Militar>
+@{
+    ViewBag.Title = "ListagemUsuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                    Relatório de Militares
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("Usuarios")">Relatório</a></li>
+                <li class="active">Militares</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<table class="table">
+
+    <tr>
+
+
+        <th>Nome </th>
+        <th>Sobrenome </th>
+        <th>Email</th>
+        @*<th>Telefone </th>
+        <th>Data Nascimento</th>
+        <th>Tipo Sanguíneo</th>
+        <th>Altura</th>
+        <th>Peso</th>
+        <th>Estado Civil</th>
+        <th>Email </th>*@
+   
+        <th>Base </th>
+        <th>Data Cadastro Sistema</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.sobrenome)</td>
+            <td>@Html.DisplayFor(modelItem => item.email)</td>
+            <td>@Html.DisplayFor(modelItem => item.telefone)</td>
+           
+
+        </tr> }
+
+    <tr>
+
+        <td><b>@Model.Count registos de @Model.TotalItemCount</b></td>
+
+        <td><a href="/Militares/RelatorioMilitar?gerarPDF=true"><b>GERAR PDF</b></a></td>
+
+    </tr>
+
+</table>
+
+
+            </div>
+
+        </div>
+@{
+    if (Model.TotalItemCount != Model.Count)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                Página @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+
+                @if (Model.HasPreviousPage)
+                {
+                    @Html.ActionLink("<<", "ListagemMilitares", new { pagina = 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.Raw(" ");
+                    @Html.ActionLink("< Anterior", "ListagemMilitares", new { pagina = Model.PageNumber - 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                }
+                else
+                {
+                    @:<<
+                    @Html.Raw(" ");
+                    @:< Anterior
+                                         }
+
+                @if (Model.HasNextPage)
+                {
+                    @Html.ActionLink("Próxima >", "ListagemMilitares", new { pagina = Model.PageNumber + 1, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                    @Html.Raw(" ");
+                    @Html.ActionLink(">>", "ListagemMilitares", new { pagina = Model.PageCount, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter })
+                }
+                else
+                {
+                    @:Próxima >
+                    @Html.Raw(" ")
+                    @:>>
+                     }
+            </div>
+        </div>
+    }
+}
+
+    </div>
+
+</div>
+
+
+

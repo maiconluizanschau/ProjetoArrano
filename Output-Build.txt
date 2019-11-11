@@ -1,0 +1,4 @@
+﻿1>------ Rebuild All started: Project: PorjetoUfsmArrano, Configuration: Debug Any CPU ------
+1>C:\Program Files\MSBuild\12.0\bin\Microsoft.Common.CurrentVersion.targets(1697,5): warning MSB3277: Found conflicts between different versions of the same dependent assembly that could not be resolved.  These reference conflicts are listed in the build log when log verbosity is set to detailed.
+1>  PorjetoUfsmArrano -> G:\ProjetoArrano\ProjetoArranoFinalMaiconI3\PorjetoUfsmArrano\PorjetoUfsmArrano\bin\PorjetoUfsmArrano.dll
+========== Rebuild All: 1 succeeded, 0 failed, 0 skipped ==========

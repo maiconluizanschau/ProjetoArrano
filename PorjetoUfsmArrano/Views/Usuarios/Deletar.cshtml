@@ -1,0 +1,138 @@
+﻿@model PorjetoUfsmArrano.Models.Usuario
+
+@{
+    ViewBag.Title = "Deletar Usuarios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br /><br /><br /><br /><br /><br /><br />
+<section class="content-header">
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="padding-right: 0px; padding-left: 0px;">
+            <div class="col-xs-9 col-sm-6 col-md-6" style="padding-right: 0px; padding-left: 18px;">
+                <h1 class="titulo">
+                   Usuário
+
+                </h1>
+            </div>
+            <div class="col-xs-3 col-sm-6 col-md-6 hidden-xs" style="padding-right: 0px; padding-left: 0px;">
+                &nbsp;<img style="float: right; width: 100px; margin-top: 25px;" src="@Href("~/Content/imagens/logo.png")" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12" style="border-bottom: 1px solid #666666;">
+            <ol class="navegacao breadcrumb">
+                <li><a href="@Url.Action("../Home")">Início</a></li>
+                <li><a href="@Url.Action("index")">Cadastros</a></li>
+                <li class="active">usuário</li>
+                <li class="active">Deletar</li>
+            </ol>
+        </div>
+    </div>
+</section>
+<div class="alert alert-danger">
+    <strong>Deseja excluir ,</strong> este usuário definitivamente do sistema?
+</div>
+
+
+<div>
+
+
+    <hr />
+
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card-box table-responsive">
+                <h4 class="m-t-0 header-title"><b>Deletar Usuários</b></h4>
+                <p class="text-muted font-13 m-b-30">
+                    Confira as informações completamente para confirmar a exclusão do usuário correto!
+                </p>
+
+                <table id="datatable" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.nome)
+                                </dt>
+                            </th>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.sobrenome)
+                                </dt>
+                            </th>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.email)
+                                </dt>
+                            </th>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.telefone)
+                                </dt>
+                            </th>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.login)
+                                </dt>
+                            </th>
+                            <th>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.Bases)
+                                </dt>
+                            </th>
+                        </tr>
+                    </thead>
+
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dd>
+                                    @Html.DisplayFor(model => model.nome)
+                                </dd>
+                            </td>
+                            <td>
+                                <dd>
+                                    @Html.DisplayFor(model => model.sobrenome)
+                                </dd>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.email)
+                                </dd>
+                            </td>
+                            <td>
+                                <dd>
+                                    @Html.DisplayFor(model => model.telefone)
+                                </dd>
+                            </td>
+                            <td>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.login)
+                                </dt>
+                            </td>
+                            <td>
+                                <dd>
+                                    @Html.DisplayFor(model => model.Bases)
+                                </dd>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Cancelar", "Index")
+        </div>
+    }
+</div>
